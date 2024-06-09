@@ -1,0 +1,6 @@
+name: slow_issue
+services:
+  slowvips:
+    build: .
+    volumes:
+      - ./data:/data
