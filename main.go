@@ -101,18 +101,18 @@ func blurAndPixelateImageSeparately() {
 		panic(err)
 	}
 
-	renederedBlurImg, err := vips.NewImageFromBuffer(renderedBlur)
+	renderedBlurImg, err := vips.NewImageFromBuffer(renderedBlur)
 	if err != nil {
 		panic(err)
 	}
 
-	_ = renederedBlurImg.Resize(1.0/16.0, vips.KernelLanczos3)
-	_ = renederedBlurImg.Resize(16.0, vips.KernelNearest)
+	_ = renderedBlurImg.Resize(1.0/16.0, vips.KernelLanczos3)
+	_ = renderedBlurImg.Resize(16.0, vips.KernelNearest)
 
 	jpgParams := vips.NewJpegExportParams()
 	jpgParams.Quality = 100
 
-	buffer, _, err := renederedBlurImg.ExportJpeg(jpgParams)
+	buffer, _, err := renderedBlurImg.ExportJpeg(jpgParams)
 	if err != nil {
 		panic(err)
 	}
